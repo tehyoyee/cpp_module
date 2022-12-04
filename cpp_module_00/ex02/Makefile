@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = account
+NAME = Account
 CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
