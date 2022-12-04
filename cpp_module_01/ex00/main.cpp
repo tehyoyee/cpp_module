@@ -2,9 +2,9 @@
 
 int main(void)
 {
-	randomChump("name");
-	Zombie *heap = newZombie("asdf");
-	randomChump("asdf");
-	randomChump("qwer");
+	Zombie zombie("stack0");
+	randomChump("stack1");
+	Zombie *heap = newZombie("heap");
 	delete heap;
+	system("leaks Zombie");
 }
