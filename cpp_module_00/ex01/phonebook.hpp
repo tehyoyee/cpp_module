@@ -46,5 +46,4 @@ class Phonebook {
 void show_field_name();
 void show_selected(Phonebook phonebook);
 
-
 #endif
