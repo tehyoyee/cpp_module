@@ -17,14 +17,14 @@ RM = rm -f
 AR = ar
 CRS = crs
 
-SRCS = main.cpp
+SRCS = main.cpp utils.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 %.o: %.cpp
-		$(CC) $(CFLAGS) -c $< -o $@
+		$(CC) $(CFLAGS) -c $< -o $@ 
 
 $(NAME): $(OBJS)
 		$(CC) -o $@ $(OBJS) -o $(NAME)
