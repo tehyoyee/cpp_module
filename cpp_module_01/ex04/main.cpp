@@ -7,7 +7,9 @@ int main(int argc, char *argv[])
 	std::string s1;
 	std::string s2;
 	std::string infile;
+	// char *infile;
 	std::string outfile;
+	// char *outfile;
 
 	if (argc != 4)
 		exit_error("incorrect argument number");

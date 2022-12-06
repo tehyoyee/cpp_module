@@ -19,11 +19,11 @@ void Harl::error() {
 }
 
 Harl::Harl() {
-	std::cout << "Harl instance constructed" << std::endl;
+	
 }
 
 Harl::~Harl() {
-	std::cout << "Harl instance disconstructed" << std::endl;
+
 }
 
 void Harl::complain(std::string level) {
