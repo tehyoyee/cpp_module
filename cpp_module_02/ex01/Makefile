@@ -12,7 +12,7 @@
 
 NAME = Fixed
 CC = clang++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+# CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 AR = ar
 CRS = crs
