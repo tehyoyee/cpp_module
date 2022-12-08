@@ -2,7 +2,6 @@
 #define FIXED_HPP
 
 #include <iostream>
-#include <cmath>
 
 class Fixed {
 	private:
@@ -10,7 +9,6 @@ class Fixed {
 		const static int F_Bits;
 
 	public:
-		Fixed(int x);
 		Fixed();						// default
 		~Fixed();						// destructor
 		Fixed(Fixed& fixed);			// copy constructor
