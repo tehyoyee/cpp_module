@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = Megaphone
 CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f

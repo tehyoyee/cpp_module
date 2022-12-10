@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-#define PHONEBOOK_H
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
 #include <iostream>
 #include <string>
-#include <iomanip>	// for align
+#include <iomanip>
 
 class Contact {
 	private:
@@ -28,22 +28,23 @@ class Contact {
 		std::string darkest_secret;
 
 	public:
-		void show_trimed(std::string str);
-		void add_contact(int index);
-		void show_single();
+		void showTrimed(std::string str);
+		void addContact(int index);
+		void showSingle();
 		void show(int index);
 };
 
 class Phonebook {
 	private:
 		Contact contact[8];
+
 	public:
-		void add_contact(int index);
+		void addContact(int index);
 		void show(int index);
-		void show_single(int index);
+		void showSingle(int index);
 };
 
-void show_field_name();
-void show_selected(Phonebook phonebook);
+void showField();
+void showSelected(Phonebook phonebook);
 
 #endif

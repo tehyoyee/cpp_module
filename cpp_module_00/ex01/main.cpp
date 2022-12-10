@@ -23,15 +23,15 @@ int	main(void)
 		index %= 8;
 		if (cmd == "ADD")
 		{
-			phonebook.add_contact(index);
+			phonebook.addContact(index);
 			index++;
 		}
 		else if (cmd == "SEARCH")
 		{
-			show_field_name();
+			showField();
 			for (int i = 0; i < 8; i++)
 				phonebook.show(i);
-			show_selected(phonebook);
+			showSelected(phonebook);
 		}
 		else if (cmd == "EXIT")
 			exit(0);

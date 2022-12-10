@@ -13,7 +13,7 @@
 #include "phonebook.hpp"
 #include <sstream>		//for parsing
 
-void Contact::show_trimed(std::string str)
+void Contact::showTrimed(std::string str)
 {
 	if (str.length() <= 10)
 		std::cout << std::right << std::setw(10) << str;
@@ -24,7 +24,7 @@ void Contact::show_trimed(std::string str)
 	}
 }
 
-void Contact::show_single()
+void Contact::showSingle()
 {
 	std::cout << "First name : " << first_name << std::endl;
 	std::cout << "Last name : " << last_name << std::endl;
@@ -33,7 +33,7 @@ void Contact::show_single()
 	std::cout << "Darkest secret : " << darkest_secret << std::endl;
 }
 
-void Contact::add_contact(int index)
+void Contact::addContact(int index)
 {
 	this->index = index;
 	std::cout << "First name : ";
@@ -50,24 +50,24 @@ void Contact::add_contact(int index)
 
 void Contact::show(int index)
 {
-	show_trimed(std::to_string(index));
+	showTrimed(std::to_string(index));
 	std::cout << "|";
-	show_trimed(last_name);
+	showTrimed(first_name);
 	std::cout << "|";
-	show_trimed(first_name);
+	showTrimed(last_name);
 	std::cout << "|";
-	show_trimed(nickname);
+	showTrimed(nickname);
 	std::cout << std::endl;
 }
 
-void Phonebook::show_single(int index)
+void Phonebook::showSingle(int index)
 {
-	contact[index].show_single();
+	contact[index].showSingle();
 }
 
-void Phonebook::add_contact(int index)
+void Phonebook::addContact(int index)
 {
-	contact[index].add_contact(index);
+	contact[index].addContact(index);
 }
 
 void Phonebook::show(int index)
@@ -75,7 +75,7 @@ void Phonebook::show(int index)
 	contact[index].show(index);
 }
 
-void show_field_name()
+void showField()
 {
 	std::cout << std::right << std::setw(10) << "Index" << "|";;
 	std::cout << std::right << std::setw(10) << "First name" << "|";
@@ -83,7 +83,7 @@ void show_field_name()
 	std::cout << std::right << std::setw(10) << "Nickname" << std::endl;
 }
 
-int is_number(std::string str)
+int isNumber(std::string str)
 {
 	for (int i = 0; i < (int)str.length(); i++)
 	{
@@ -93,14 +93,15 @@ int is_number(std::string str)
 	return 1;
 }
 
-void show_selected(Phonebook phonebook)
+void showSelected(Phonebook phonebook)
 {
 	int index;
 	std::stringstream ss;
 	std::string input;
+
 	std::cout << "Select index (0~7) : ";
 	std::getline(std::cin, input);
-	if (!is_number(input))
+	if (!isNumber(input))
 	{
 		std::cout << "incorrect index" << std::endl;
 		return;
@@ -112,5 +113,5 @@ void show_selected(Phonebook phonebook)
 		std::cout << "out of index" << std::endl;
 		return;
 	}
-	phonebook.show_single(index);
+	phonebook.showSingle(index);
 } 
