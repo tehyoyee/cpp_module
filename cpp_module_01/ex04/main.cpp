@@ -2,14 +2,13 @@
 
 int main(int argc, char *argv[])
 {
+	size_t i = 0;
 	std::ifstream ifs;
 	std::ofstream ofs;
 	std::string s1;
 	std::string s2;
 	std::string infile;
-	// char *infile;
 	std::string outfile;
-	// char *outfile;
 
 	if (argc != 4)
 		exit_error("incorrect argument number");
@@ -25,4 +24,5 @@ int main(int argc, char *argv[])
 	ofs.open(outfile);
 	if (ofs.fail())
 		exit_error("file cannot be opened");
+	for (i; i < )
 }

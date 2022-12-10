@@ -6,5 +6,6 @@ int main(void)
 	randomChump("stack1");
 	Zombie *heap = newZombie("heap");
 	delete heap;
-	system("leaks Zombie");
+
+	return 0;
 }
