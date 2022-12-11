@@ -19,8 +19,10 @@ class Fixed {
 		Fixed(const float num);
 		Fixed(const Fixed& fixed);			// copy constructor
 		~Fixed();						// destructor
+
 		float toFloat( void ) const;
 		int toInt( void ) const;
+
 		int getRawBits() const;
 		void setRawBits(int const raw);
 	
@@ -28,6 +30,23 @@ class Fixed {
 	////////////////////	overloading		//////////////////
 	//////////////////////////////////////////////////////////
 	
+		bool operator>(const Fixed& fixed);
+		bool operator<(const Fixed& fixed);
+		bool operator>=(const Fixed& fixed);
+		bool operator<=(const Fixed& fixed);
+		bool operator==(const Fixed& fixed);
+		bool operator!=(const Fixed& fixed);
+
+		Fixed operator+(const Fixed& fixed);
+		Fixed operator-(const Fixed& fixed);
+		Fixed operator*(const Fixed& fixed);
+		Fixed operator/(const Fixed& fixed);
+
+		Fixed& operator++();
+		const Fixed operator++(int);
+		Fixed& operator--();
+		const Fixed operator--(int);
+
 		Fixed& operator=(const Fixed& fixed);	// A copy Assignment operator overload
 };
 
