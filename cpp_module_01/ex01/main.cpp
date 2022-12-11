@@ -2,11 +2,11 @@
 
 int main(void)
 {
-	Zombie zombie("stack0");
+	Zombie zombie("stack");
 	Zombie *zombies;
 
-	zombies = zombieHorde(10, "asdf");
-	for (int i = 0; i < 10; i++)
+	zombies = zombieHorde(5, "ZombieHorde");
+	for (int i = 0; i < 5; i++)
 		zombies[i].announce();
 	delete [] zombies;
 

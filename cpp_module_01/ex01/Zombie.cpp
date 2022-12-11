@@ -2,7 +2,7 @@
 
 Zombie::Zombie()
 {
-	
+	std::cout << "Zombie instance created" << std::endl;
 }
 
 Zombie::Zombie(std::string name)
