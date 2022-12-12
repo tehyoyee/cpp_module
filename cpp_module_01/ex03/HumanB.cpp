@@ -12,15 +12,11 @@
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name): name(name)
-{
+HumanB::HumanB(std::string name): name(name) { }
 
-}
+HumanB::HumanB() { }
 
-HumanB::~HumanB()
-{
-
-}
+HumanB::~HumanB() { }
 
 void	HumanB::attack()
 {

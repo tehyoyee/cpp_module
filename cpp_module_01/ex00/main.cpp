@@ -18,6 +18,5 @@ int main(void)
 	randomChump("stack1");
 	Zombie *heap = newZombie("heap");
 	delete heap;
-
 	return 0;
 }

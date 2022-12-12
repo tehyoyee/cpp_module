@@ -18,6 +18,8 @@ Zombie::Zombie(std::string name)
 	std::cout << name << " created" << std::endl;
 }
 
+Zombie::Zombie() { }
+
 Zombie::~Zombie()
 {
 	std::cout << this->name << " closed" << std::endl;

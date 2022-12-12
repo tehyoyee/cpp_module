@@ -36,11 +36,11 @@ int main(int argc, char *argv[])
 	if (infile.size() == 0 || s1_len == 0 || s2_len == 0)
 		exit_error("incorrect file name");
 	ifs.open(infile);
+
 	if (ifs.fail())
 		exit_error("file cannot be opened");
 	outfile = infile.append(".new");
 	ofs.open(outfile);
-
 	if (ofs.fail())
 		exit_error("file cannot be opened");
 
