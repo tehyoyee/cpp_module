@@ -15,10 +15,8 @@
 int	main(void)
 {
 	std::string	str = "HI THIS IS BRAIN";
-	std::string str2 = "asdf";
 	std::string *stringPTR = &str;
 	std::string &stringREF = str;
-	stringREF = str2;
 
 	std::cout << "===== Address ===== " << std::endl;
 	std::cout << "str       : " << &str << std::endl;
