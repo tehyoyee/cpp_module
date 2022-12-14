@@ -2,9 +2,20 @@
 #define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
+#include <iostream>
 
-class ScavTrap : private ClapTrap, public ClapTrap {
 
+class ScavTrap : public ClapTrap
+{
+	public:
+		ScavTrap();
+		~ScavTrap();
+		ScavTrap(std::string name);
+		ScavTrap& operator=(const ScavTrap& scavtrap);
+		ScavTrap(const ScavTrap& scavtrap);
+		
+		void guardGate();
+		void attack(const std::string& target);
 };
 
 #endif

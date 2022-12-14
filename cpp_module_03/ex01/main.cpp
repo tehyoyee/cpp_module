@@ -2,24 +2,42 @@
 
 int main(void)
 {
-	ClapTrap claptrap("asdf");
-	ClapTrap asdf(claptrap);
-	// ScavTrap scavtrap("scav1");
-	// ClapTrap qwer = claptrap;
+	ScavTrap scav1;
+	ScavTrap scav2("scav2");
+	ScavTrap scav3(scav1);
+	ScavTrap scav4 = scav2;
+
+	scav2.attack("asdf");
+	scav2.guardGate();
 	
-	// scavtrap.attack("asdf");
-	// scavtrap.beRepaired(3);
-	// scavtrap.takeDamage(3);
-	// scavtrap.takeDamage(3);
-	// scavtrap.takeDamage(3);
-	// scavtrap.takeDamage(3);
-	// scavtrap.takeDamage(3);
-	// scavtrap.takeDamage(3);
-	// qwer.takeDamage(3);
-	// qwer.takeDamage(3);
-	// qwer.takeDamage(3);
-	// qwer.takeDamage(3);
-	// qwer.takeDamage(3);
-	// qwer.takeDamage(3);
-	// scavtrap.attack("asdf");
+	scav1.attack("scav2");
+	scav2.takeDamage(3);
+	scav2.beRepaired(3);
+	
+	scav2.attack("scav1");
+	scav1.takeDamage(3);
+	scav1.takeDamage(3);
+	scav1.takeDamage(3);
+	scav1.takeDamage(3);
+
+	// scav3.attack("asdf");
+	// scav4.guardGate();
+	
+	// scav3.attack("scav2");
+	// scav4.takeDamage(3);
+	// scav4.beRepaired(3);
+	
+	// scav4.attack("scav1");
+	// scav3.takeDamage(3);
+	// scav3.takeDamage(3);
+	// scav3.takeDamage(3);
+	// scav3.takeDamage(3);
+
+
+	// ScavTrap *scav1 = new ScavTrap;
+	// ClapTrap *a = scav1;
+	// a->attack("a");
+	// scav1->attack("a");
+	// delete a;
+
 }
