@@ -2,42 +2,25 @@
 
 int main(void)
 {
-	ScavTrap scav1;
-	ScavTrap scav2("scav2");
-	ScavTrap scav3(scav1);
-	ScavTrap scav4 = scav2;
-
-	scav2.attack("asdf");
-	scav2.guardGate();
+	ScavTrap s1("s1");
+	ScavTrap s2("s2");
 	
-	scav1.attack("scav2");
-	scav2.takeDamage(3);
-	scav2.beRepaired(3);
+	std::cout << std::endl;
+
+	s2.attack("s1");
+	s1.takeDamage(20);
+
+	std::cout << std::endl;
+
+	s1.attack("s2");
+	s2.takeDamage(20);
+	s2.beRepaired(300);
 	
-	scav2.attack("scav1");
-	scav1.takeDamage(3);
-	scav1.takeDamage(3);
-	scav1.takeDamage(3);
-	scav1.takeDamage(3);
+	std::cout << std::endl;
 
-	// scav3.attack("asdf");
-	// scav4.guardGate();
-	
-	// scav3.attack("scav2");
-	// scav4.takeDamage(3);
-	// scav4.beRepaired(3);
-	
-	// scav4.attack("scav1");
-	// scav3.takeDamage(3);
-	// scav3.takeDamage(3);
-	// scav3.takeDamage(3);
-	// scav3.takeDamage(3);
+	s2.attack("s1");
+	s1.takeDamage(20);
+	s1.guardGate();
 
-
-	// ScavTrap *scav1 = new ScavTrap;
-	// ClapTrap *a = scav1;
-	// a->attack("a");
-	// scav1->attack("a");
-	// delete a;
-
+	std::cout << std::endl;
 }

@@ -30,40 +30,45 @@ ClapTrap::~ClapTrap() {
 
 void ClapTrap::attack(const std::string& target) {
 	if (this->EnergyPoints == 0)
-		std::cout << "ClapTrap " << this->name << " has no EnergyPoints" << std::endl;
+		std::cout << this->name << " has no EnergyPoints" << std::endl;
 	else if (this->HitPoints == 0)
-		std::cout << "ClapTrap " << this->name << " has no HitPoints" << std::endl;
+		std::cout << this->name << " has no HitPoints" << std::endl;
 	else
 	{
 		--this->EnergyPoints;
-		std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->AttackDamage << " points of damage!" << std::endl;
+		std::cout << this->name << " attacks " << target << ", causing " << this->AttackDamage << " points of damage!" << std::endl;
 	}
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
 	if (this->HitPoints == 0)
-		std::cout << "ClapTrap " << this->name << " already died" << std::endl;
+		std::cout << this->name << " already died" << std::endl;
 	else if (amount > this->HitPoints)
 	{
 		this->HitPoints = 0;
-		std::cout << "ClapTrap " << this->name << " died" << std::endl;
+		std::cout << this->name << " died" << std::endl;
 	}
 	else
 	{
 		this->HitPoints -= amount;
-		std::cout << "ClapTrap " << this->name << " taked Damage, causing " << amount << " points of damage!" << std::endl;
+		std::cout << this->name << " taked damage, causing " << amount << " points of damage!" << std::endl;
 	}
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
 	if (this->EnergyPoints == 0)
-		std::cout << "ClapTrap " << this->name << " has no EnergyPoints" << std::endl;
+		std::cout << this->name << " has no EnergyPoints" << std::endl;
 	else if (this->HitPoints == 0)
-		std::cout << "ClapTrap " << this->name << " has no HitPoints" << std::endl;
+		std::cout << this->name << " has no HitPoints" << std::endl;
 	else
 	{
 		--this->EnergyPoints;
 		this->HitPoints += amount;
 	}
-	std::cout << "ClapTrap " << this->name << " has been repaired" << std::endl;
+	std::cout << this->name << " has been repaired" << std::endl;
+	if (HitPoints >= 10)
+	{
+		std::cout << this->name << " has full of HitPoints" << std::endl;
+		this->HitPoints = 10;
+	}
 }
