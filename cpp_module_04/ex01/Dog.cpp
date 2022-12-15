@@ -24,4 +24,6 @@ Dog::Dog(const Dog& dog) {
 	std::cout << "Dog Constructor called" << std::endl;
 }
 
-void Dog::makeSound() const {std::cout << "Bow Wow ! " << std::endl;}
+void Dog::makeSound() const { std::cout << "Bow Wow ! " << std::endl; }
+
+void *Dog::getBrain() const { return this->brain; }

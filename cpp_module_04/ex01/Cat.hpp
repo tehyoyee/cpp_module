@@ -14,6 +14,7 @@ class Cat : public Animal {
 		Cat(const Cat& cat);
 
 		void makeSound() const;
+		Brain *getBrain() const;
 };
 
 #endif

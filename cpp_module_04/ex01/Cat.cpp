@@ -24,4 +24,6 @@ Cat::Cat(const Cat& cat) {
 	std::cout << "Cat Constructor called" << std::endl;
 }
 
-void Cat::makeSound() const {std::cout << "Meow ! " << std::endl;}
+void Cat::makeSound() const { std::cout << "Meow ! " << std::endl; }
+
+Brain *Cat::getBrain() const { return this->brain; }
