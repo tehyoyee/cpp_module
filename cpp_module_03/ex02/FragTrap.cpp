@@ -5,11 +5,11 @@ FragTrap::FragTrap() {
 	this->HitPoints = 100;
 	this->EnergyPoints = 100;
 	this->AttackDamage = 30;
-	std::cout << "FragTrap " << this->name << " Default Constructor called" << std::endl;
+	std::cout << "FragTrap Constructor called" << std::endl;
 }
 
 FragTrap::~FragTrap() {
-	std::cout << "FragTrap " << this->name << " Destructor called" << std::endl;
+	std::cout << "FragTrap Destructor called" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) {
@@ -17,7 +17,7 @@ FragTrap::FragTrap(std::string name) {
 	this->HitPoints = 100;
 	this->EnergyPoints = 100;
 	this->AttackDamage = 30;
-	std::cout << "FragTrap " << this->name << " String Contructor called" << std::endl;
+	std::cout << "FragTrap Contructor called" << std::endl;
 }
 
 FragTrap::FragTrap(FragTrap& fragtrap) {
@@ -25,7 +25,7 @@ FragTrap::FragTrap(FragTrap& fragtrap) {
 	this->HitPoints = fragtrap.HitPoints;
 	this->EnergyPoints = fragtrap.EnergyPoints;
 	this->AttackDamage = fragtrap.AttackDamage;
-	std::cout << "FragTrap " << this->name << " Copy Contructor called" << std::endl;
+	std::cout << "FragTrap Copy assignment operator called" << std::endl;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& fragtrap) {
@@ -36,7 +36,7 @@ FragTrap& FragTrap::operator=(const FragTrap& fragtrap) {
 		this->EnergyPoints = fragtrap.EnergyPoints;
 		this->AttackDamage = fragtrap.AttackDamage;
 	}
-	std::cout << "FragTrap " << this->name << " Copy Assignment Contructor called" << std::endl;
+	std::cout << "FragTrap Contructor called" << std::endl;
 	return *this;
 }
 

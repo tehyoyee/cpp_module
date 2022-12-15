@@ -5,11 +5,11 @@ ScavTrap::ScavTrap() {
 	this->HitPoints = 100;
 	this->EnergyPoints = 50;
 	this->AttackDamage = 20;
-	std::cout << "ScavTrap " << this->name << " Default Constructor called" << std::endl;
+	std::cout << "ScavTrap Constructor called" << std::endl;
 }
 
 ScavTrap::~ScavTrap() {
-	std::cout << "ScavTrap " << this->name << " Destructor called" << std::endl;
+	std::cout << "ScavTrap Destructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) {
@@ -17,7 +17,7 @@ ScavTrap::ScavTrap(std::string name) {
 	this->HitPoints = 100;
 	this->EnergyPoints = 50;
 	this->AttackDamage = 20;
-	std::cout << "ScavTrap " << this->name << " String Contructor called" << std::endl;
+	std::cout << "ScavTrap Contructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap& scavtrap) {
@@ -25,7 +25,7 @@ ScavTrap::ScavTrap(ScavTrap& scavtrap) {
 	this->HitPoints = scavtrap.HitPoints;
 	this->EnergyPoints = scavtrap.EnergyPoints;
 	this->AttackDamage = scavtrap.AttackDamage;
-	std::cout << "ScavTrap " << this->name << " Copy Contructor called" << std::endl;
+	std::cout << "ScavTrap Contructor called" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& scavtrap) {
@@ -36,7 +36,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& scavtrap) {
 		this->EnergyPoints = scavtrap.EnergyPoints;
 		this->AttackDamage = scavtrap.AttackDamage;
 	}
-	std::cout << "ScavTrap " << this->name << " Copy Assignment Contructor called" << std::endl;
+	std::cout << "ScavTrap Copy assignment operator called" << std::endl;
 	return *this;
 }
 
