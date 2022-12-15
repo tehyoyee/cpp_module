@@ -1,5 +1,4 @@
 #include "Fixed.hpp"
-#include <iostream>
 
 const int Fixed::F_Bits = 8;
 
@@ -12,7 +11,7 @@ Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed::Fixed(Fixed& fixed) {
+Fixed::Fixed(const Fixed& fixed) {
 	std::cout << "Copy constructor called" << std::endl;
 	this->value = fixed.getRawBits();
 }
