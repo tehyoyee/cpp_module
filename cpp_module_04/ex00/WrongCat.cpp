@@ -1,6 +1,6 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() {
+WrongCat::WrongCat(): WrongAnimal() {
 	this->type = "WrongCat";
 	std::cout << "WrongCat " << this->type << " Constructor called" << std::endl;	
 }
@@ -15,7 +15,7 @@ WrongCat& WrongCat::operator=(const WrongCat& wrongcat) {
 	return *this;
 }
 
-WrongCat::WrongCat(const WrongCat& wrongcat) {
+WrongCat::WrongCat(const WrongCat& wrongcat): WrongAnimal() {
 	this->type = wrongcat.getType();
 	std::cout << "WrongCat " << this->type << " Constructor called" << std::endl;
 }
