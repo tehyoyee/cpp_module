@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 NAME = a.out
-CC = c++
-# CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 AR = ar
 CRS = crs
@@ -25,10 +25,10 @@ OBJS = $(SRCS:.cpp=.o)
 all: $(NAME)
 
 %.o: %.cpp
-		$(CC) $(CFLAGS) -c $< -o $@
+		$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-		$(CC) -o $@ $(OBJS) -o $(NAME)
+		$(CXX) -o $@ $(OBJS) -o $(NAME)
 
 clean:
 		$(RM) $(OBJS)

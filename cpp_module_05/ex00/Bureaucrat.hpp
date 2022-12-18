@@ -10,24 +10,29 @@ class Bureaucrat {
 		int grade;
 
 	public:
-	class CustomException : public std::exception
+	class GradeTooHighException : public std::exception
 	{
 		public:
-			const char* what(void) const throw()
-			{
-				return ("CustomException");
-			}
+			const char* what(void) const throw();
 	};
-		Bureaucrat();
-		~Bureaucrat();
+	class GradeTooLowException : public std::exception
+	{
+		public:
+			const char* what(void) const throw();
+	};
+	
+		Bureaucrat(void);
+		~Bureaucrat(void);
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat& operator=(const Bureaucrat& b);
 		Bureaucrat(const Bureaucrat& b);
 
-		int getGrade() const;
-		std::string getName() const;
+		int getGrade(void) const;
+		std::string getName(void) const;
+		void increaseGrade(void);
+		void decreaseGrade(void);
 };
 
-std::ostream& operator<<(std::ostream& out, Bureaucrat& b);
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& b);
 
 #endif

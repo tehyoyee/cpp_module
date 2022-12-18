@@ -1,13 +1,12 @@
-#ifndef AFORM_HPP
-#define AFORM_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 
 #include <exception>
 #include <iostream>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
-
-class AForm {
+class Form {
 	private:
 		std::string const name;
 		bool sign;
@@ -25,17 +24,12 @@ class AForm {
 			public:
 				const char* what(void) const throw();
 		};
-		class NoSignException : public std::exception
-		{
-			public:
-				const char * what(void) const throw();
-		};
-
-		AForm();
-		virtual ~AForm();
-		AForm(std::string name, int signGrade, int executeGrade);
-		AForm& operator=(const AForm& aform);
-		AForm(const AForm& aform);
+		
+		Form();
+		~Form();
+		Form(std::string name, int signGrade, int executeGrade);
+		Form& operator=(const Form& form);
+		Form(const Form& form);
 		
 		void beSigned(const Bureaucrat& b);
 
@@ -43,13 +37,8 @@ class AForm {
 		int getSignGrade(void) const;
 		int getExecuteGrade(void) const;
 		bool getSign(void) const;
-		void checkExecute(const Bureaucrat& b) const;
-		virtual void execute(const Bureaucrat& b) const = 0;
-
-		void setSign(bool sign);
-		void setName(std::string name);
 };
 
-std::ostream& operator<<(std::ostream& out, const AForm& aform);
+std::ostream& operator<<(std::ostream& out, const Form& form);
 
 #endif

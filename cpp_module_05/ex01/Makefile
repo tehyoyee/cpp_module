@@ -19,10 +19,7 @@ CRS = crs
 
 SRCS = main.cpp \
 		Bureaucrat.cpp \
-		AForm.cpp \
-		PresidentialPardonForm.cpp \
-		RobotomyRequestForm.cpp \
-		ShrubberyCreationForm.cpp
+		Form.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
