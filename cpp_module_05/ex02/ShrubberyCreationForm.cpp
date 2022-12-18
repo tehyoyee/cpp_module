@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: youjeon <youjeon@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 17:45:01 by youjeon           #+#    #+#             */
-/*   Updated: 2022/09/05 15:28:46 by youjeon          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(target, 145, 137) { }
