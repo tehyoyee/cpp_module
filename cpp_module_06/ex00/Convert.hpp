@@ -3,11 +3,9 @@
 
 #include <iostream>
 #include <cmath>
-
-# include <iostream>
-# include <cmath>
-# include <sstream>
-# include <limits>
+#include <sstream>
+#include <limits>
+#include <iomanip>
 
 class Convert {
 	private:
@@ -32,10 +30,10 @@ class Convert {
 		double getDouble(void) const;
 
 		bool getErr(void) const;
-		char printChar(void) const;
-		int printInt(void) const;
-		float printFloat(void) const;
-		double printDouble(void) const;
+		char showChar(void) const;
+		int showInt(void) const;
+		float showFloat(void) const;
+		double showDouble(void) const;
 		
 		class ImpossibleException : public std::exception {
 			public:

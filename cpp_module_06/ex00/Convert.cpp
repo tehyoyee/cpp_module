@@ -1,5 +1,5 @@
 #include "Convert.hpp"
-#include <iomanip>
+
 const char* Convert::ImpossibleException::what() const throw() {
   return "impossible";
 }
@@ -8,56 +8,35 @@ const char* Convert::NonDisplayableException::what() const throw() {
   return "Non displayable";
 }
 
-Convert::Convert(void)
+Convert::Convert(void): s_char(0), s_int(0), s_float(0), s_double(0), err(false) { }
+Convert::Convert(const Convert& convert)
 {
-	this->s_char = 0;
-	this->s_int = 0;
-	this->s_float = 0;
-	this->s_double = 0;
-	this->err = false;
+	this->s_char = convert.getChar();
+	this->s_int = convert.getInt();
+	this->s_float = convert.getFloat();
+	this->s_double = convert.getDouble();
+	this->err = convert.getErr();
 }
 
-Convert::Convert(const Convert& obj)
+Convert& Convert::operator=(const Convert& convert)
 {
-	this->s_char = obj.getChar();
-	this->s_int = obj.getInt();
-	this->s_float = obj.getFloat();
-	this->s_double = obj.getDouble();
-	this->err = obj.getErr();
-	this->err = false;
-
-}
-
-Convert& Convert::operator=(const Convert& obj)
-{
-	this->s_char = obj.getChar();
-	this->s_int = obj.getInt();
-	this->s_float = obj.getFloat();
-	this->s_double = obj.getDouble();
-	this->err = obj.getErr();
+	this->s_char = convert.getChar();
+	this->s_int = convert.getInt();
+	this->s_float = convert.getFloat();
+	this->s_double = convert.getDouble();
+	this->err = convert.getErr();
 	return (*this);
 }
 
-Convert::~Convert(void)
-{
-}
-
-Convert::Convert(std::string s)
-{
-	this->s_char = 0;
-	this->s_int = 0;
-	this->s_float = 0;
-	this->s_double = 0;
-	this->err = false;
-	setValue(s);
-}
+Convert::~Convert(void) { }
+Convert::Convert(std::string s): s_char(0), s_int(0), s_float(0), s_double(0), err(false) {	setValue(s); }
 
 void Convert::setValue(std::string s)
 {
 	std::string::size_type n;
 	std::string::size_type f;
 	std::string::size_type ff;
-	
+
 	try
 	{
 		this->input = s;
@@ -76,21 +55,21 @@ void Convert::setValue(std::string s)
 	{
 		if (input == "nan" || input == "nanf")
 		{
-			s_double = std::numeric_limits<float>::quiet_NaN();
-			s_float = std::numeric_limits<float>::quiet_NaN();
+			s_double = sqrt(-1.0);
+			s_float = sqrt(-1.0);
 			return;
 		}
 		else
 		{
 			if (input[0] == '-')
 			{
-				s_double = -std::numeric_limits<float>::infinity();
-				s_float = -std::numeric_limits<float>::infinity();
+				s_double = -1/0.0;
+				s_float = -1/0.0;
 			}
 			else
 			{
-				s_double = std::numeric_limits<float>::infinity();
-				s_float = std::numeric_limits<float>::infinity();
+				s_double = 1/0.0;
+				s_float = 1/0.0;
 			}
 			return;
 		}
@@ -98,11 +77,11 @@ void Convert::setValue(std::string s)
 	if (f != ff)
 	{
 		err = true;
+		return ;
 	}
-	if (s.length() == 1 && !std::isdigit(static_cast<char>(s[0])))			// char 형
+
+	if (s.length() == 1 && !std::isdigit(static_cast<char>(s[0])))		// char
 	{
-		if (s.at(0) == 'f')
-			err = true;
 		s_char = static_cast<char>(s[0]);
 		s_int = static_cast<int>(s_char);
 		s_float = static_cast<float>(s_char);
@@ -133,51 +112,14 @@ void Convert::setValue(std::string s)
 		}
 	}
 	s_int = atoi(s.c_str());
-	// 	std::stringstream ss;
-	// 	ss << s_int;
-	// if (n == std::string::npos)				// int 형
-	// {
-	// 	std::cout << "ASDF" << std::endl;
-	// 	s_int = atoi(s.c_str());
-	// 	std::stringstream ss;
-	// 	ss << s_int;
-	// 	std::cout << ss.str() << std::endl;
-	// 	std::cout << input << std::endl;
-	// 	if (ss.str() != input)
-	// 	{
-	// 		std::cout << "ASDFSDFSD" << std::endl;
-	// 		if (s_int > 0 && f == s.length() - 1)
-	// 		{
-	// 			std::cout << "ZXCV" << std::endl;
-	// 			s_char = static_cast<char>(s_int);
-	// 			s_float = static_cast<float>(s_int);
-	// 			s_double = static_cast<double>(s_int);
-	// 		}
-	// 		else
-	// 		{
-	// 			err = true;
-	// 			std::cout << "d"<<std::endl;
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		s_char = static_cast<char>(s_int);
-	// 		s_float = static_cast<float>(s_int);
-	// 		s_double = static_cast<double>(s_int);
-	// 	}
-	// }
-	// else
-	// {
-		const char *str = s.c_str();
-		char *end = NULL;
-		s_double = strtod(str, &end);
-		s_int = static_cast<int>(s_double);
-		s_char = static_cast<char>(s_double);
-		s_float = static_cast<float>(s_double);
-	// }	
+	const char *str = s.c_str();
+	s_double = strtod(str, NULL);
+	s_int = static_cast<int>(s_double);
+	s_char = static_cast<char>(s_double);
+	s_float = static_cast<float>(s_double);
 }
 
-char Convert::printChar(void) const
+char Convert::showChar(void) const
 {
 	std::stringstream ss;
 	
@@ -192,7 +134,7 @@ char Convert::printChar(void) const
 		throw ImpossibleException();
 }
 
-int Convert::printInt(void) const
+int Convert::showInt(void) const
 {
 	std::stringstream ss;
 	
@@ -202,48 +144,33 @@ int Convert::printInt(void) const
 	return (s_int);
 }
 
-float Convert::printFloat(void) const
+float Convert::showFloat(void) const
 {
 	if (err)
 		throw ImpossibleException();
-	// if (std::isnan(s_double))
-	// 	throw std::runtime_error("nanf");
-	// if (std::isinf(s_double) && s_double > 0)
-	// 	throw std::runtime_error("inff");
-	// else if (std::isinf(s_double) && s_double < 0)
-	// 	throw std::runtime_error("-inff");
 	return (s_float);
 }
 
-double Convert::printDouble(void) const
+double Convert::showDouble(void) const
 {
 	if (err)
 		throw ImpossibleException();
-	// if (std::isnan(s_double))
-	// 	throw std::runtime_error("nan");
-	// if (std::isinf(s_double) && s_double > 0)
-	// 	throw std::runtime_error("inf");
-	// else if (std::isinf(s_double) && s_double < 0)
-	// 	throw std::runtime_error("-inf");
 	return (s_double);	
 }
 
 char Convert::getChar(void) const
 {
 	return (s_char);
-
 }
 
 int Convert::getInt(void) const
 {
 	return (s_int);
-
 }
 
 float Convert::getFloat(void) const
 {
 	return (s_float);
-
 }
 
 double Convert::getDouble(void) const
@@ -265,7 +192,7 @@ std::ostream& operator<<(std::ostream &out, const Convert &b)
 
 	try
 	{
-		out << "char: " << b.printChar() << std::endl;
+		out << "char: " << b.showChar() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -274,7 +201,7 @@ std::ostream& operator<<(std::ostream &out, const Convert &b)
 	
 	try
 	{
-		out << "int: " << b.printInt() << std::endl;
+		out << "int: " << b.showInt() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -287,16 +214,16 @@ std::ostream& operator<<(std::ostream &out, const Convert &b)
 		{
 			if (ss.str().length() > 6)
 			{
-				out << "float: " << b.printFloat() << "f" << std::endl;
+				out << "float: " << b.showFloat() << "f" << std::endl;
 			}
 			else
 			{
-				out << "float: " << b.printFloat() << ".0f" << std::endl;
+				out << "float: " << b.showFloat() << ".0f" << std::endl;
 			}
 		}
 		else
 		{
-			out << "float: " << b.printFloat() << "f" <<std::endl;
+			out << "float: " << b.showFloat() << "f" <<std::endl;
 		}
 	}
 	catch(const std::exception& e)
@@ -310,17 +237,17 @@ std::ostream& operator<<(std::ostream &out, const Convert &b)
 		{
 			if (ss.str().length() > 6)
 			{
-				out << "double: " << b.printDouble() << std::endl;
+				out << "double: " << b.showDouble() << std::endl;
 			}
 			else
 			{
-				out << "double: " << b.printDouble() << ".0" << std::endl;
+				out << "double: " << b.showDouble() << ".0" << std::endl;
 			}
 
 		}
 		else
 		{
-			out << "double: " << std::setprecision(std::numeric_limits<double>::digits10) << b.printDouble() << std::endl;
+			out << "double: " << std::setprecision(std::numeric_limits<double>::digits10) << b.showDouble() << std::endl;
 		}
 	}
 	catch(const std::exception& e)
