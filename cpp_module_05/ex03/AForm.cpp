@@ -16,13 +16,9 @@ const char * AForm::NoSignException::what(void) const throw()
 	return "this form's not signed yet";
 }
 
-AForm::AForm(void): name("default"), sign(false), signGrade(150), executeGrade(150) {
-	std::cout << "AForm Constructor called" << std::endl;
-}
+AForm::AForm(void): name("default"), sign(false), signGrade(150), executeGrade(150) { }
 
-AForm::~AForm(void) {
-	std::cout << "AForm Destructor called" << std::endl;
-}
+AForm::~AForm(void) { }
 
 AForm::AForm(std::string name, int signGrade, int executeGrade):
 	name(name), sign(false), signGrade(signGrade), executeGrade(executeGrade)
@@ -31,7 +27,6 @@ AForm::AForm(std::string name, int signGrade, int executeGrade):
 		throw AForm::GradeTooHighException();
 	else if (signGrade > 150 || executeGrade > 150)
 		throw AForm::GradeTooLowException();
-	std::cout << "AForm Constructor called" << std::endl;
 }
 
 AForm& AForm::operator=(const AForm& aform) {
@@ -44,7 +39,6 @@ AForm& AForm::operator=(const AForm& aform) {
 		throw AForm::GradeTooHighException();
 	else if (signGrade > 150 || executeGrade > 150)
 		throw AForm::GradeTooLowException();
-	std::cout << "AForm Copy assignment called" << std::endl;
 	return *this;
 }
 
@@ -55,7 +49,6 @@ AForm::AForm(const AForm& aform):
 		throw AForm::GradeTooHighException();
 	else if (signGrade > 150 || executeGrade > 150)
 		throw AForm::GradeTooLowException();
-	std::cout << "AForm Constructor called" << std::endl;
 }
 
 void AForm::beSigned(const Bureaucrat& b) {
