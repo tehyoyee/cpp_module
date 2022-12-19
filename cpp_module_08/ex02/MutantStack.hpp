@@ -9,8 +9,8 @@ class MutantStack : public std::stack<T>
 {
 	public:
 		MutantStack(void) {};
-		MutantStack(const MutantStack& obj) {*this = obj;};
-		MutantStack& operator=(const MutantStack& obj) {*this = obj; return (*this);}
+		MutantStack(const MutantStack& mutant) {*this = mutant;};
+		MutantStack& operator=(const MutantStack& mutant) {*this = mutant; return (*this);}
 		~MutantStack(void) {};
 
 		typedef typename MutantStack<T>::stack::container_type::iterator iterator;

@@ -1,17 +1,9 @@
 #include "Span.hpp"
 
-Span::Span(const Span& obj)
+Span::Span(const Span& span)
 {
-	this->size = obj.getSize();
-	v = obj.getVector();
-}
-
-Span& Span::operator=(const Span& obj)
-{
-	if(this == &obj) return *this;
-	this->size = obj.getSize();
-	v = obj.getVector();
-	return (*this);
+	this->size = span.getSize();
+	v = span.getVector();
 }
 
 Span::~Span(void)
@@ -26,11 +18,19 @@ Span::Span(std::size_t i)
 	v.reserve(i);
 }
 
+Span& Span::operator=(const Span& span)
+{
+	if(this == &span) return *this;
+	this->size = span.getSize();
+	v = span.getVector();
+	return (*this);
+}
+
 void Span::addNumber(int value)
 {
 	if (v.capacity() <= this->size) 
 	{
-		throw std::length_error("size over");
+		throw std::length_error("Size over");
 	}
 	this->size++;
 	v.push_back(value);
@@ -40,7 +40,7 @@ void Span::addRange(std::vector<int>::iterator const &begin, std::vector<int>::i
 {
 	if (v.capacity() < this->size + std::distance(begin, end)) 
 	{
-		throw std::length_error("size over");
+		throw std::length_error("Size over");
 	}
 	v.insert(v.end(), begin, end);
 }
@@ -58,16 +58,12 @@ std::size_t Span::shortestSpan() const
 	std::sort(tmp.begin(), tmp.end());
 	for (std::vector<int>::iterator iter = tmp.begin(); iter != tmp.end(); iter++) 
 	{
-		if (iter == tmp.begin()) 
-		{
+		if (iter == tmp.begin())
 			prev = *iter;
-		}
 		else 
 		{
-			if (ret > *iter - prev) 
-			{
+			if (ret > *iter - prev)
 				ret = *iter - prev;
-			}
 			prev = *iter;
 		}
 	}
@@ -78,7 +74,7 @@ std::size_t Span::longestSpan() const
 {
 	if (v.size() <= 2)
 	{
-		throw std::logic_error("vector size is not over 2");
+		throw std::logic_error("vector size is too small");
 	}
 	return (*std::max_element(v.begin(), v.end()) - *std::min_element(v.begin(), v.end()) );
 }

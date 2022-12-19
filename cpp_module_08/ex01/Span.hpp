@@ -16,12 +16,14 @@ class Span {
 		std::vector<int> v;
 		Span(void);
 	public:
-		Span(const Span& obj);
-		Span& operator=(const Span& obj);
+		Span(const Span& span);
 		~Span(void);
 		Span(std::size_t i);
+		Span& operator=(const Span& span);
+
 		void addNumber(int value);
 		void addRange(std::vector<int>::iterator const &begin, std::vector<int>::iterator const &end);
+		
 		std::size_t shortestSpan() const;
 		std::size_t longestSpan() const;
 		std::size_t getSize() const;
