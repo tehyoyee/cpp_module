@@ -12,6 +12,8 @@ Data& Data::operator=(const Data& v) {
 Data::Data(const Data& v) { this->value = v.getValue(); }
 int Data::getValue() const { return value; }
 
+
+
 uintptr_t serialize(Data* ptr) {
   return reinterpret_cast<uintptr_t>(ptr);
 }
