@@ -1,4 +1,3 @@
-
 template <typename T>
 Array<T>::Array(void) : len(0), array(NULL) { }
 

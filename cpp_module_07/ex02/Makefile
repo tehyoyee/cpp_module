@@ -12,7 +12,7 @@
 
 NAME = a.out
 CXX = c++
-# CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 AR = ar
 CRS = crs
