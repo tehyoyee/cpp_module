@@ -1,6 +1,5 @@
 #include "PmergeMe.hpp"
 
-
 int	main(int argc, char **argv) {
 	if (argc == 1) {
 		std::cerr << "Error: it needs arguments" << std::endl;
@@ -28,9 +27,15 @@ int	main(int argc, char **argv) {
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-
+	std::cout << "<vector> Before: ";
 	for (std::vector<int>::iterator iter = v.begin(); iter != v.end(); iter++) {
 		std::cout << *iter << " ";
 	}
 	std::cout << std::endl;
+	std::cout << "<list> Before: ";
+	for (std::list<int>::iterator iter = l.begin(); iter != l.end(); iter++) {
+		std::cout << *iter << " ";
+	}
+	std::cout << std::endl;
+	
 }
