@@ -1,0 +1,15 @@
+#include "RPN.hpp"
+
+
+int	main(int argc, char **argv)
+{
+	std::stack<int>	stackMain;
+	int	result;
+
+	if (argc != 2) {
+		std::cerr << "Error: invalid argument" << std::endl;
+		exit(1);
+	}
+	stackMain = pileStack(argv[1]);
+	std::cout << stackMain.top() << std::endl;
+}

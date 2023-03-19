@@ -11,4 +11,5 @@ int main(int argc, char *argv[])
 	}
 	data = readData();
 	operateInput(data, argv[1]);
+	return 0;
 }
