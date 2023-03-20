@@ -37,5 +37,10 @@ int	main(int argc, char **argv) {
 		std::cout << *iter << " ";
 	}
 	std::cout << std::endl;
-	
+
+	v = mergeSort(v, 0, v.size());
+	std::cout << "after " << std::endl;
+	for (std::vector<int>::iterator iter = v.begin(); iter != v.end(); iter++)
+		std::cout << *iter << " ";
+	std::cout << std::endl;
 }
