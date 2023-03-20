@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include <cctype>
 
-std::vector<int>	mergeSort(std::vector<int> arr, int start, int end);
-
+std::vector<int>	mergeSortVector(std::vector<int> arr, int start, int end);
+std::vector<int>	insertionVector(std::vector<int> arr);
 
 #endif

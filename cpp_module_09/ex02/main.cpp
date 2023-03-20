@@ -38,9 +38,18 @@ int	main(int argc, char **argv) {
 	}
 	std::cout << std::endl;
 
-	v = mergeSort(v, 0, v.size());
+    std::clock_t start_vec = std::clock();
+	v = mergeSortVector(v, 0, v.size());
+	// v = insertionVector(v);
+    std::clock_t end_vec = std::clock();
 	std::cout << "after " << std::endl;
 	for (std::vector<int>::iterator iter = v.begin(); iter != v.end(); iter++)
 		std::cout << *iter << " ";
 	std::cout << std::endl;
+
+
+
+    // std::sort(vec.begin(), vec.end());
+    double elapsed_vec = static_cast<double>(end_vec - start_vec) / CLOCKS_PER_SEC * 1000000;
+    std::cout << "Time to process a range of " << v.size() << " elements with vector sort: " << elapsed_vec << " us" << std::endl;
 }
