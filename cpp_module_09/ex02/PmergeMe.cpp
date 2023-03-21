@@ -49,25 +49,20 @@ std::vector<int>	mergeSortVector(std::vector<int> arr, int start, int end) {
 std::list<int>	insertionSortList(std::list<int> arr) {
 	int tmp;
 
-	for (std::list<int>::iter == arr.begin(); iter != arr.end(); iter++) {
-		for (std::list<int>::iter2 == iter; iter2 != arr.begin(); iter2--) {
-			
+	for (std::list<int>::iterator iter = arr.begin(); iter != arr.end(); iter++) {
+		for (std::list<int>::iterator iter2 = iter; iter2 != arr.begin(); iter2--) {
+			if (*iter2 - 1 > *iter2) {
+				tmp = *iter2;
+				*iter2 = *iter;
+				*iter = tmp;
+			}
 		}
 	}
-	// for (int i = 1; i < arr.size(); i++) {
-	// 	for (int j = i; j > 0; j--) {
-	// 		if (arr[j - 1] > arr[j]) {
-	// 			tmp = arr[j];
-	// 			arr[j] = arr[j - 1];
-	// 			arr[j - 1] = tmp;
-	// 		}
-	// 	}
-	// }
 	return arr;
 }
 
 std::list<int>	mergeSortList(std::list<int> arr, int start, int end) {
-	if (end - start < 5)
+	if (end - start < 2)
 		return insertionSortList(arr);
 	int i = 0;
 	int	mid = (end + start) / 2;	
@@ -78,7 +73,7 @@ std::list<int>	mergeSortList(std::list<int> arr, int start, int end) {
 		arrLeft.push_back(arr.front());
 		arr.pop_front();
 	}
-	while (arrRight.size < end - mid) {
+	while (arrRight.size() < end - mid) {
 		arrRight.push_back(arr.front());
 		arr.pop_front();
 	}

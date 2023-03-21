@@ -38,18 +38,24 @@ int	main(int argc, char **argv) {
 	}
 	std::cout << std::endl;
 
-    std::clock_t start_vec = std::clock();
+    std::clock_t startVector = std::clock();
 	v = mergeSortVector(v, 0, v.size());
-	// v = insertionVector(v);
-    std::clock_t end_vec = std::clock();
-	std::cout << "after " << std::endl;
+    std::clock_t endVector = std::clock();
+	std::clock_t	startList = std::clock();
+	l = mergeSortList(l, 0, l.size());
+	std::clock_t	endList = std::clock();
+	std::cout << "<vector> after" << std::endl;
 	for (std::vector<int>::iterator iter = v.begin(); iter != v.end(); iter++)
 		std::cout << *iter << " ";
 	std::cout << std::endl;
+	std::cout << "<list> after" << std::endl;
+	for (std::list<int>::iterator iter = l.begin(); iter != l.end(); iter++)
+		std::cout << *iter << " ";
+	std::cout << std::endl;
 
-
-
+	std::cout << "Time to process a range of " << v.size() << " elements with Vector sort: " << (double)(endVector - startVector) << " us" << std::endl;
+	std::cout << "Time to process a range of " << l.size() << " elements with List sort: " << (double)(endList - startList) << " us" << std::endl;
     // std::sort(vec.begin(), vec.end());
-    double elapsed_vec = static_cast<double>(end_vec - start_vec) / CLOCKS_PER_SEC * 1000000;
-    std::cout << "Time to process a range of " << v.size() << " elements with vector sort: " << elapsed_vec << " us" << std::endl;
+    // double elapsed_vec = static_cast<double>(endVector - startVector) / CLOCKS_PER_SEC * 1000000;
+    // std::cout << "Time to process a range of " << v.size() << " elements with vector sort: " << elapsed_vec << " us" << std::endl;
 }
