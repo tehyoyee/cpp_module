@@ -11,7 +11,7 @@ int	main(int argc, char **argv) {
 
 	try {
 		for (int i = 1; i < argc; i++) {
-			for (int j = 0; j < strlen(argv[i]); j++) {
+			for (int j = 0; j < (int)strlen(argv[i]); j++) {
 				if (!isdigit(argv[i][j])) {
 					std::cerr << "Error: invalid argument" << std::endl;
 					exit(1);

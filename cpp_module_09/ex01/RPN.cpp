@@ -13,7 +13,7 @@ std::stack<int>	pileStack(char *raw) {
 		std::cerr << "Error" << std::endl;
 		exit(1);
 	}
-	while (i < strlen(raw)) {
+	while (i < (int)strlen(raw)) {
 		if (isdigit(raw[i])) {
 			stackMain.push(raw[i++] - '0');
 			continue;
