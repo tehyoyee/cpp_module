@@ -46,64 +46,6 @@ std::vector<int>	mergeSortVector(std::vector<int> arr, int start, int end) {
 	return mergedArr;
 }
 
-std::list<int>	insertionSortList(std::list<int> arr) {
-	int tmp;
-
-	for (std::list<int>::iterator iter1 = arr.begin(); iter1 != arr.end(); iter1++) {
-		for (std::list<int>::iterator iter2 = iter1; iter2 != arr.begin(); iter2--) {
-			if (*(std::prev(iter2)) > *iter2) {
-				tmp = *iter2;
-				*iter2 = *(std::prev(iter2));
-				*(std::prev(iter2)) = tmp;
-			}
-		}
-	}
-	return arr;
-}
-
-std::list<int>	mergeSortList(std::list<int> arr, int start, int end) {
-	if (end - start < 32)
-		return insertionSortList(arr);
-
-	int	mid = (end + start) / 2;	
-	std::list<int>	arrLeft;
-	std::list<int>	arrRight;
-
-	while ((int)arrLeft.size() < mid) {
-		arrLeft.push_back(arr.front());
-		arr.pop_front();
-	}
-	while ((int)arrRight.size() < end - mid) {
-		arrRight.push_back(arr.front());
-		arr.pop_front();
-	}
-	arrLeft = mergeSortList(arrLeft, 0, arrLeft.size());
-	arrRight = mergeSortList(arrRight, 0, arrRight.size());
-
-	std::list<int>	mergedArr;
-
-	while (arrLeft.size() && arrRight.size()) {
-		if (arrLeft.front() < arrRight.front()) {
-			mergedArr.push_back(arrLeft.front());
-			arrLeft.pop_front();
-		}
-		else {
-			mergedArr.push_back(arrRight.front());
-			arrRight.pop_front();
-		}
-	}
-	while (arrLeft.size()) {
-		mergedArr.push_back(arrLeft.front());
-		arrLeft.pop_front();
-	}
-	while (arrRight.size()) {
-		mergedArr.push_back(arrRight.front());
-		arrRight.pop_front();
-	}
-	return mergedArr;
-}
-
-
 std::deque<int>	insertionSortDeque(std::deque<int> arr) {
 	int tmp;
 

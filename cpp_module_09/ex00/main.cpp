@@ -2,7 +2,7 @@
 
 int main(int argc, char *argv[])
 {
-	std::map<std::string, double> data;
+	std::map<std::string, float> data;
 	(void)argv;
 	if (argc != 2)
 	{

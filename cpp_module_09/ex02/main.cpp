@@ -1,5 +1,13 @@
 #include "PmergeMe.hpp"
 
+size_t	get_cnt(int element) {
+	size_t i = 0;
+	for (; element > 0; i++) {
+		element /= 10;
+	}
+	return i;
+}
+
 int	main(int argc, char **argv) {
 	if (argc == 1) {
 		std::cerr << "Error: it needs arguments" << std::endl;
@@ -7,7 +15,6 @@ int	main(int argc, char **argv) {
 	}
 
 	std::vector<int>	v;
-	std::list<int>		l;
 	std::deque<int>		d;
 
 	try {
@@ -18,13 +25,16 @@ int	main(int argc, char **argv) {
 					exit(1);
 				}
 			}
-			int	element = std::stoi(argv[i]);
+			int	element = atoi(argv[i]);
+			if (get_cnt(element) != strlen(argv[i])) {
+				std::cerr << "Error" << std::endl;
+				exit(1);
+			}
 			if (element <= 0) {
 				std::cerr << "Error: not a positive argument" << std::endl;
 				exit(1);
 			}
 			v.push_back(element);
-			l.push_back(element);
 			d.push_back(element);
 		}
 	} catch (std::exception &e) {
@@ -41,27 +51,15 @@ int	main(int argc, char **argv) {
 		std::cout << *iter << " ";
 	}
 	std::cout << std::endl;
-	std::cout << "<list> Before: ";
-	for (std::list<int>::iterator iter = l.begin(); iter != l.end(); iter++) {
-		std::cout << *iter << " ";
-	}
-	std::cout << std::endl;
 
     std::clock_t startVector = std::clock();
 	v = mergeSortVector(v, 0, v.size());
     std::clock_t endVector = std::clock();
-	std::clock_t	startList = std::clock();
-	l = mergeSortList(l, 0, l.size());
-	std::clock_t	endList = std::clock();
 	std::clock_t	startDeque = std::clock();
 	d = mergeSortDeque(d, 0, d.size());
 	std::clock_t	endDeque = std::clock();
 	std::cout << "<vector> after" << std::endl;
 	for (std::vector<int>::iterator iter = v.begin(); iter != v.end(); iter++)
-		std::cout << *iter << " ";
-	std::cout << std::endl;
-	std::cout << "<list> after" << std::endl;
-	for (std::list<int>::iterator iter = l.begin(); iter != l.end(); iter++)
 		std::cout << *iter << " ";
 	std::cout << std::endl;
 	std::cout << "<deque> after" << std::endl;
@@ -70,6 +68,5 @@ int	main(int argc, char **argv) {
 	std::cout << std::endl;
 
 	std::cout << "Time to process a range of " << v.size() << " elements with Vector sort: " << (double)(endVector - startVector) << " us" << std::endl;
-	std::cout << "Time to process a range of " << l.size() << " elements with List sort: " << (double)(endList - startList) << " us" << std::endl;
 	std::cout << "Time to process a range of " << d.size() << " elements with Deque sort: " << (double)(endDeque - startDeque) << " us" << std::endl;
 }

@@ -8,9 +8,9 @@ void	errorMessageDate(std::string str, std::string date) {
 	std::cerr << str << date << std::endl;
 }
 
-std::map<std::string, double> readData() {
+std::map<std::string, float> readData() {
 	// csv 파일 읽어 저장.
-	std::map<std::string, double> data;
+	std::map<std::string, float> data;
 	std::ifstream readFile("data.csv");
 	if (!readFile) {
 		std::cerr << "Error: data.csv doesn't exist." << std::endl;
@@ -22,9 +22,15 @@ std::map<std::string, double> readData() {
 		std::stringstream ss(input);
 		std::string date, rate;
 		std::getline(ss, date, ',');
-		std::getline(ss, rate, ',');
-		data[date] = std::stod(rate);
+		std::getline(ss, rate);
+		try {
+			data[date] = atof(rate.c_str());
+		} catch (std::exception &e) {
+			std::cerr << e.what() << std::endl;
+			exit(1);
+		}
 	}
+	readFile.close();
 	return data;
 }
 
@@ -54,15 +60,15 @@ bool	checkDate(std::string date) {
 	return true;
 }
 
-double	getRatio(std::map<std::string, double> data, std::string date) {
-	std::map<std::string, double>::iterator iter;
-	double	prevRatio = data.begin()->second;
+float	getRatio(std::map<std::string, float> data, std::string date) {
+	std::map<std::string, float>::iterator iter;
+	float	prevRatio = data.begin()->second;
 	int		year, month, day;
 
 	try {
-		year = stoi(date.substr(0, 4));
-		month = stoi(date.substr(5, 2));
-		day = stoi(date.substr(8, 2));
+		year = atoi(date.substr(0, 4).c_str());
+		month = atoi(date.substr(5, 2).c_str());
+		day = atoi(date.substr(8, 2).c_str());
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 		return -1;
@@ -70,12 +76,12 @@ double	getRatio(std::map<std::string, double> data, std::string date) {
 	for (iter = data.begin(); iter != data.end(); iter++) {
 		if (iter->first == date.substr(0, 10)) {
 			return iter->second;
-		} else if (year < stoi((iter->first).substr(0, 4))) {
+		} else if (year < atoi((iter->first).substr(0, 4).c_str())) {
 			return prevRatio;
-		} else if (year == stoi((iter->first).substr(0, 4))) {
-			if (month < stoi((iter->first).substr(5, 2)))
+		} else if (year == atoi((iter->first).substr(0, 4).c_str())) {
+			if (month < atoi((iter->first).substr(5, 2).c_str()))
 				return prevRatio;
-			else if (month == stoi((iter->first). substr(5, 2)) && day < stoi((iter->first).substr(8, 2)))
+			else if (month == atoi((iter->first). substr(5, 2).c_str()) && day < atoi((iter->first).substr(8, 2).c_str()))
 				return prevRatio;
 		}
 		prevRatio = iter->second;
@@ -87,10 +93,10 @@ double	getRatio(std::map<std::string, double> data, std::string date) {
 
 bool	checkValue(std::string value)
 {
-	double v;
+	float v;
 
 	try {
-		v = stod(value);
+		v = atof(value.c_str());
 		if (v < 0) {
 			errorMessage("Error: not a positive number");
 			return false;
@@ -105,7 +111,7 @@ bool	checkValue(std::string value)
 	return true;
 }
 
-void	operateInput(std::map<std::string, double> data, char *input) {
+void	operateInput(std::map<std::string, float> data, char *input) {
 	std::ifstream readFile(input);
 	if (!readFile) {
 		errorMessage("Error: file not exist");
@@ -123,7 +129,7 @@ void	operateInput(std::map<std::string, double> data, char *input) {
 		std::string			date;
 		std::string			value;
 		std::istringstream	iss(inputString);
-		double				ratio;
+		float				ratio;
 
 		if (!(iss >> date >> sep >> value) || sep != '|')
 			errorMessageDate("Error: bad input => ", date);
@@ -135,7 +141,7 @@ void	operateInput(std::map<std::string, double> data, char *input) {
 			if (ratio != -1) {
 				std::cout << std::fixed;
 				std::cout.precision(2);
-				std::cout << date << " => " << value << " = " << stod(value) * getRatio(data, date) << std::endl;
+				std::cout << date << " => " << value << " = " << atof(value.c_str()) * getRatio(data, date) << std::endl;
 			} else {
 				std::cerr << "Error: cannot find the date" << std::endl;
 			}

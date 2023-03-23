@@ -7,8 +7,8 @@
 #include <map>
 #include <exception>
 
-std::map<std::string, double> readData();
+std::map<std::string, float> readData();
 
-void	operateInput(std::map<std::string, double> data, char *input);
+void	operateInput(std::map<std::string, float> data, char *input);
 
 #endif
