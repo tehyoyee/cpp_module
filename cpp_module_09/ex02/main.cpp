@@ -17,16 +17,19 @@ int	main(int argc, char **argv) {
 					exit(1);
 				}
 			}
-			int	element = atoi(argv[i]);
+			int	element = std::stoi(argv[i]);
 			if (element <= 0) {
 				std::cerr << "Error: not a positive argument" << std::endl;
+				exit(1);
 			}
 			v.push_back(element);
 			l.push_back(element);
 		}
 	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << "Error: " << e.what() << std::endl;
+		exit(1);
 	}
+
 	std::cout << "<vector> Before: ";
 	for (std::vector<int>::iterator iter = v.begin(); iter != v.end(); iter++) {
 		std::cout << *iter << " ";
@@ -55,7 +58,4 @@ int	main(int argc, char **argv) {
 
 	std::cout << "Time to process a range of " << v.size() << " elements with Vector sort: " << (double)(endVector - startVector) << " us" << std::endl;
 	std::cout << "Time to process a range of " << l.size() << " elements with List sort: " << (double)(endList - startList) << " us" << std::endl;
-    // std::sort(vec.begin(), vec.end());
-    // double elapsed_vec = static_cast<double>(endVector - startVector) / CLOCKS_PER_SEC * 1000000;
-    // std::cout << "Time to process a range of " << v.size() << " elements with vector sort: " << elapsed_vec << " us" << std::endl;
 }

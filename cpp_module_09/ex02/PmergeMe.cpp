@@ -49,12 +49,12 @@ std::vector<int>	mergeSortVector(std::vector<int> arr, int start, int end) {
 std::list<int>	insertionSortList(std::list<int> arr) {
 	int tmp;
 
-	for (std::list<int>::iterator iter = arr.begin(); iter != arr.end(); iter++) {
-		for (std::list<int>::iterator iter2 = iter; iter2 != arr.begin(); iter2--) {
-			if (*iter2 - 1 > *iter2) {
+	for (std::list<int>::iterator iter1 = arr.begin(); iter1 != arr.end(); iter1++) {
+		for (std::list<int>::iterator iter2 = iter1; iter2 != arr.begin(); iter2--) {
+			if (*(std::prev(iter2)) > *iter2) {
 				tmp = *iter2;
-				*iter2 = *iter;
-				*iter = tmp;
+				*iter2 = *(std::prev(iter2));
+				*(std::prev(iter2)) = tmp;
 			}
 		}
 	}
@@ -62,7 +62,7 @@ std::list<int>	insertionSortList(std::list<int> arr) {
 }
 
 std::list<int>	mergeSortList(std::list<int> arr, int start, int end) {
-	if (end - start < 2)
+	if (end - start < 5)
 		return insertionSortList(arr);
 
 	int	mid = (end + start) / 2;	

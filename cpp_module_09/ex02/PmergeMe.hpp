@@ -6,8 +6,6 @@
 #include <list>
 #include <ctime>
 #include <exception>
-#include <cstdlib>
-#include <cctype>
 
 std::vector<int>	mergeSortVector(std::vector<int> arr, int start, int end);
 std::vector<int>	insertionSortVector(std::vector<int> arr);

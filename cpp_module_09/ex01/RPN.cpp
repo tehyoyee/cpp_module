@@ -18,7 +18,7 @@ std::stack<int>	pileStack(char *raw) {
 			stackMain.push(raw[i++] - '0');
 			continue;
 		} else if (raw[i] == '+' || raw[i] == '-' || raw[i] == '*' || raw[i] == '/') {
-			if (stackMain.size() != 2) {
+			if (stackMain.size() < 2) {
 				std::cerr << "Error" << std::endl;
 				exit(1);
 			}
