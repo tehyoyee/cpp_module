@@ -8,6 +8,7 @@ int	main(int argc, char **argv) {
 
 	std::vector<int>	v;
 	std::list<int>		l;
+	std::deque<int>		d;
 
 	try {
 		for (int i = 1; i < argc; i++) {
@@ -24,12 +25,17 @@ int	main(int argc, char **argv) {
 			}
 			v.push_back(element);
 			l.push_back(element);
+			d.push_back(element);
 		}
 	} catch (std::exception &e) {
 		std::cerr << "Error: " << e.what() << std::endl;
 		exit(1);
 	}
 
+	std::cout << "<deque> Before: ";
+	for (std::deque<int>::iterator iter = d.begin(); iter != d.end(); iter++) {
+		std::cout << *iter << " ";
+	}
 	std::cout << "<vector> Before: ";
 	for (std::vector<int>::iterator iter = v.begin(); iter != v.end(); iter++) {
 		std::cout << *iter << " ";
@@ -47,6 +53,9 @@ int	main(int argc, char **argv) {
 	std::clock_t	startList = std::clock();
 	l = mergeSortList(l, 0, l.size());
 	std::clock_t	endList = std::clock();
+	std::clock_t	startDeque = std::clock();
+	d = mergeSortDeque(d, 0, d.size());
+	std::clock_t	endDeque = std::clock();
 	std::cout << "<vector> after" << std::endl;
 	for (std::vector<int>::iterator iter = v.begin(); iter != v.end(); iter++)
 		std::cout << *iter << " ";
@@ -55,7 +64,12 @@ int	main(int argc, char **argv) {
 	for (std::list<int>::iterator iter = l.begin(); iter != l.end(); iter++)
 		std::cout << *iter << " ";
 	std::cout << std::endl;
+	std::cout << "<deque> after" << std::endl;
+	for (std::deque<int>::iterator iter = d.begin(); iter != d.end(); iter++)
+		std::cout << *iter << " ";
+	std::cout << std::endl;
 
 	std::cout << "Time to process a range of " << v.size() << " elements with Vector sort: " << (double)(endVector - startVector) << " us" << std::endl;
 	std::cout << "Time to process a range of " << l.size() << " elements with List sort: " << (double)(endList - startList) << " us" << std::endl;
+	std::cout << "Time to process a range of " << d.size() << " elements with Deque sort: " << (double)(endDeque - startDeque) << " us" << std::endl;
 }
