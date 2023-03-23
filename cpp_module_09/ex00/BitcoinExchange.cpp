@@ -134,7 +134,7 @@ void	operateInput(std::map<std::string, double> data, char *input) {
 			ratio = getRatio(data, date);
 			if (ratio != -1) {
 				std::cout << std::fixed;
-				std::cout.precision(3);
+				std::cout.precision(2);
 				std::cout << date << " => " << value << " = " << stod(value) * getRatio(data, date) << std::endl;
 			} else {
 				std::cerr << "Error: cannot find the date" << std::endl;
