@@ -10,7 +10,7 @@ size_t	get_cnt(int element) {
 
 int	main(int argc, char **argv) {
 	if (argc == 1) {
-		std::cerr << "Error: it needs arguments" << std::endl;
+		std::cout << "Error: it needs arguments" << std::endl;
 		exit(1);
 	}
 
@@ -21,32 +21,33 @@ int	main(int argc, char **argv) {
 		for (int i = 1; i < argc; i++) {
 			for (int j = 0; j < (int)strlen(argv[i]); j++) {
 				if (!isdigit(argv[i][j])) {
-					std::cerr << "Error: invalid argument" << std::endl;
+					std::cout << "Error: invalid argument" << std::endl;
 					exit(1);
 				}
 			}
 			int	element = atoi(argv[i]);
 			if (get_cnt(element) != strlen(argv[i])) {
-				std::cerr << "Error" << std::endl;
+				std::cout << "Error" << std::endl;
 				exit(1);
 			}
 			if (element <= 0) {
-				std::cerr << "Error: not a positive argument" << std::endl;
+				std::cout << "Error: not a positive argument" << std::endl;
 				exit(1);
 			}
 			v.push_back(element);
 			d.push_back(element);
 		}
 	} catch (std::exception &e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		exit(1);
 	}
 
-	std::cout << "<deque> Before: ";
+	std::cout << "<deque> Before: " << std::endl;
 	for (std::deque<int>::iterator iter = d.begin(); iter != d.end(); iter++) {
 		std::cout << *iter << " ";
 	}
-	std::cout << "<vector> Before: ";
+	std::cout << std::endl;
+	std::cout << "<vector> Before: " << std::endl;
 	for (std::vector<int>::iterator iter = v.begin(); iter != v.end(); iter++) {
 		std::cout << *iter << " ";
 	}

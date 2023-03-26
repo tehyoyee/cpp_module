@@ -1,11 +1,11 @@
 #include "BitcoinExchange.hpp"
 
 void	errorMessage(std::string str) {
-	std::cerr << str << std::endl;
+	std::cout << str << std::endl;
 }
 
 void	errorMessageDate(std::string str, std::string date) {
-	std::cerr << str << date << std::endl;
+	std::cout << str << date << std::endl;
 }
 
 std::map<std::string, float> readData() {
@@ -13,7 +13,7 @@ std::map<std::string, float> readData() {
 	std::map<std::string, float> data;
 	std::ifstream readFile("data.csv");
 	if (!readFile) {
-		std::cerr << "Error: data.csv doesn't exist." << std::endl;
+		std::cout << "Error: data.csv doesn't exist." << std::endl;
 		exit(1);
 	}
 	std::string input;
@@ -26,7 +26,7 @@ std::map<std::string, float> readData() {
 		try {
 			data[date] = atof(rate.c_str());
 		} catch (std::exception &e) {
-			std::cerr << e.what() << std::endl;
+			std::cout << e.what() << std::endl;
 			exit(1);
 		}
 	}
@@ -45,7 +45,7 @@ bool	checkDate(std::string date) {
 	int					year, month, day;
 	char				sep1, sep2;
 
-	if (date.length() != 10 || date.substr(5, 1) == "+" || date.substr(8, 1) == "+") {
+	if (date.length() != 10 || date.substr(5, 1) == "+" || date.substr(6, 1) == "+" || date.substr(7, 1) == "+" || date.substr(8, 1) == "+" || date.substr(9, 1) == "+") {
 		return false;
 	}
 	iss >> year >> sep1 >> month >> sep2 >> day;
@@ -95,6 +95,12 @@ bool	checkValue(std::string value)
 {
 	float v;
 
+	for (size_t i = 0; i < value.length(); i++) {
+		if (value[i] == '-' || value[i] == '+') {
+			errorMessage("Error: a wierd number");
+			return false;
+		}
+	}
 	try {
 		v = atof(value.c_str());
 		if (v < 0) {
@@ -143,7 +149,7 @@ void	operateInput(std::map<std::string, float> data, char *input) {
 				std::cout.precision(2);
 				std::cout << date << " => " << value << " = " << atof(value.c_str()) * getRatio(data, date) << std::endl;
 			} else {
-				std::cerr << "Error: cannot find the date" << std::endl;
+				std::cout << "Error: cannot find the date" << std::endl;
 			}
 		}
 	}

@@ -3,10 +3,9 @@
 int main(int argc, char *argv[])
 {
 	std::map<std::string, float> data;
-	(void)argv;
 	if (argc != 2)
 	{
-		std::cerr << "Error: could not open file." << std::endl;
+		std::cout << "Error: could not open file." << std::endl;
 		exit(1);
 	}
 	data = readData();
